@@ -1,4 +1,5 @@
-import modDatabase, modVariables
+from core import modDatabase
+from core import modVariables
 
 def sachi(usrdir,dicto):
     print('modSearch.sachi: '+usrdir)

@@ -1,6 +1,6 @@
 import os, time, random, subprocess, json
 from subprocess import call
-import toolHalfu
+from core import toolHalfu
 
 def diro(direc=''):
     call(['mkdir','-p',direc])

@@ -1,5 +1,6 @@
 import json, random, pprint, requests
-import tool, modVariables
+from core import tool
+from core import modVariables
 
 def opendb(usrdir):
     print('modDatabase.opendb: '+usrdir)
