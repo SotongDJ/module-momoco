@@ -95,7 +95,7 @@ def opencsv(fille,keywo):
             for n in range(0,len(word)):
                 libo.update({ keys[n] : word[n] })
             if tite:
-                result.update({ libo.pop('uuid','false') : libo })
+                result.update({ libo.pop('uuid','false').replace("uuid-","") : libo  })
             else:
                 zero = '9000'
                 uri = tool.date(modde=3)
@@ -268,7 +268,7 @@ def expocsv(usrdir,keywo):
     for uuid in sorted(list(rawdb.keys())):
         linno = ''
         temra = rawdb.get(uuid,{})
-        temra.update({ 'uuid' : uuid })
+        temra.update({ 'uuid' : "uuid-"+uuid })
         for keyso in keys:
             linno = linno + temra.get(keyso,'').replace('\n',' ').replace(keywo,'-') + keywo
         resuf.write(linno+'\n')
