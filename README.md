@@ -1,2 +1,2 @@
-# telepot-momoco
-Money money come tool in Telepot/Python3 environment
+# module-momoco
+Core scripts of Money money come tool

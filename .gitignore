@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -60,6 +61,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+=======
+>>>>>>> 04416e339511b8f40b53921780d0e02c92d63841
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
