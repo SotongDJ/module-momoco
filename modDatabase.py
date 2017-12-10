@@ -62,25 +62,21 @@ def getKaratio(usrdir,modde='refes'):
         resut = {}
 
     curre = set(list(keydb.get('karen'))+list(keydb.get('tkare')))
-    kara = []
     for m in curre:
         for n in curre:
             if m != n:
-                kara.append(m+n)
-    setta = '\"'+'\",\"'.join(kara)+'\"'
-    urlla = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20('+setta+')&format=json&env=store://datatables.org/alltableswithkeys'
-    print("URL: "+urlla+" ")
-    datta = json.loads(requests.get(urlla).text)
-    pprint.pprint(datta)
-    for m in datta['query']['results']['rate']:
-        resut.update({ m['id'] : m['Rate'] })
+                urlla = 'https://free.currencyconverterapi.com/api/v5/convert?q='+m+'_'+n+'&compact=y'
+                print("URL: "+urlla+" ")
+                datta = json.loads(requests.get(urlla).text)
+                pprint.pprint(datta)
+                resut.update({ m+n : datta.get(m+'_'+n,{}).get('val',0.0) })
 
     if karat != resut:
         faale = open(usrdir + '/karen.json',"w")
         json.dump(resut,faale,indent=4,sort_keys=True)
-        tool.acedate(usrdir,'karen',modda='write')
         faale.close()
-        print("Karat changed")
+        print("Karat changed \n resut:")
+        pprint.pprint(resut)
     else:
         print("Karat remain")
 
