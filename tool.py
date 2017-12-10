@@ -58,19 +58,3 @@ def roundostr(numbe): # round() dos str
     if len(tamba[1]) != 2:
         tampa = '0'
     return str(numba)+tampa
-
-def acedate(usrdir,modde,modda='check'):
-    filla = modde + '.date'
-    ckpath(usrdir,filla,addi='json')
-    fillo = open(usrdir + '/' + filla,'r')
-    recod = json.load(fillo)
-
-    datte = recod.get('datte','00000000')
-
-    if modda == 'write':
-        recod.update({ 'datte' : date() })
-        fillo = open(usrdir + '/' + filla,'w')
-        json.dump(recod,fillo)
-        fillo.close()
-
-    return datte
