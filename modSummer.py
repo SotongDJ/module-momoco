@@ -3,7 +3,6 @@ from core import modDatabase
 def sumer(usrdir,dicto):
     print('modSummer.sumer: '+usrdir)
     libra = modDatabase.opendb(usrdir)
-    karat = modDatabase.openKaratio(usrdir)
     libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
@@ -12,6 +11,7 @@ def sumer(usrdir,dicto):
     utempo = dicto.get('utempo','')
     takas = dicto.get('takas','')
     kekas = dicto.get('kekas','')
+    karen = dicto.get('karen','')
 
     keywo = dicto.get(kekas,'')
     tiset = modDatabase.timra(usrdir, dtempo=dtempo, utempo=utempo)
@@ -27,15 +27,25 @@ def sumer(usrdir,dicto):
             if dicto.get(keywo,'') != '':
                 if sorse.get(keysa,'') != dicto.get(keywo,''):
                     modee = False
+
+        valus = 0.0
         if modee:
             stagun.append(rekod)
-            print(sorse.get(kekas,'')+' = '+keywo+"?")
+            #print(sorse.get(kekas,'')+' = '+keywo+"?")
 
             if sorse.get(kekas,'') == keywo:
                 taket = sorse.get(takas,'')
+                tkare = sorse.get('tkare','')
+                tpric = sorse.get('tpric','')
                 print('kekas:'+kekas+', value:'+sorse.get(kekas,''))
                 print('takas:'+takas+', taket:'+taket)
-                upvalu = stados.get(taket,0.0) + float(sorse.get('tpric',''))
+
+                if tkare != karen:
+                    valus = modDatabase.cvKaren(usrdir,tkare,karen,float(tpric))
+                else:
+                    valus = float(tpric)
+
+                upvalu = stados.get(taket,0.0) + valus
                 stados.update({ taket : upvalu })
 
         modee = True
