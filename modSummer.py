@@ -9,14 +9,19 @@ def sumer(usrdir,dicto):
 
     dtempo = dicto.get('dtempo','')
     utempo = dicto.get('utempo','')
-    namma = dicto.get('namma','')
-    klass = dicto.get('klass','')
-    shoop = dicto.get('shoop','')
-    fromm = dicto.get('fromm','')
-    karen = dicto.get('karen','')
-    price = dicto.get('price','')
-    toooo = dicto.get('toooo','')
-    tkare = dicto.get('tkare','')
-    tpric = dicto.get('tpric','')
 
     tiset = modDatabase.timra(usrdir, dtempo=dtempo, utempo=utempo)
+
+    modee = True
+
+    resut = []
+    for rekod in tiset:
+        sorse = rawdb.get(rekod,{})
+        for keywo in list(sorse.keys()):
+            if dicto.get(keywo,'') != '':
+                if sorse.get(keywo,'') != dicto.get(keywo,''):
+                    modee = False
+        if modee:
+            resut.append(rekod)
+        modee = True
+    return resut
