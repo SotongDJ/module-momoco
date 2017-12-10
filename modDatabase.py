@@ -49,34 +49,38 @@ def openKaratio(usrdir):
     faale.close()
     return karatio
 
-def getKaratio(usrdir,keydb,modde='refes'):
+def getKaratio(usrdir,modde='refes'):
     print('modDatabase.getKaratio: '+ usrdir)
     print('modde: '+modde)
-    resut = False
-    if int(tool.acedate(usrdir,'karen')) < int(tool.date()):
-        if modde == 'refes':
-            karatio = openKaratio(usrdir)
-        elif modde == 'reset':
-            karatio = {}
-        curre = set(list(keydb.get('karen'))+list(keydb.get('tkare')))
-        kara = []
-        for m in curre:
-            for n in curre:
-                if m != n:
-                    kara.append(m+n)
-        setta = '\"'+'\",\"'.join(kara)+'\"'
-        urlla = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20('+setta+')&format=json&env=store://datatables.org/alltableswithkeys'
-        datta = json.loads(requests.get(urlla).text)
-        for m in datta['query']['results']['rate']:
-            karatio.update({ m['id'] : m['Rate'] })
+    keydb = opendb(usrdir).get('key',{})
 
+    if modde == 'refes':
+        karat = openKaratio(usrdir)
+        resut = openKaratio(usrdir)
+    elif modde == 'reset':
+        karat = {}
+        resut = {}
+
+    curre = set(list(keydb.get('karen'))+list(keydb.get('tkare')))
+    kara = []
+    for m in curre:
+        for n in curre:
+            if m != n:
+                kara.append(m+n)
+    setta = '\"'+'\",\"'.join(kara)+'\"'
+    urlla = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20('+setta+')&format=json&env=store://datatables.org/alltableswithkeys'
+    datta = json.loads(requests.get(urlla).text)
+    for m in datta['query']['results']['rate']:
+        resut.update({ m['id'] : m['Rate'] })
+
+    if karat != resut:
         faale = open(usrdir + '/karen.json',"w")
-        json.dump(karatio,faale,indent=4,sort_keys=True)
+        json.dump(resut,faale,indent=4,sort_keys=True)
         tool.acedate(usrdir,'karen',modda='write')
         faale.close()
-
-        resut = True
-    return resut
+        print("Karat changed")
+    else:
+        print("Karat remain")
 
 def opencsv(fille,keywo):
     print('modDatabase.opencsv')
