@@ -69,7 +69,9 @@ def getKaratio(usrdir,modde='refes'):
                 kara.append(m+n)
     setta = '\"'+'\",\"'.join(kara)+'\"'
     urlla = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20('+setta+')&format=json&env=store://datatables.org/alltableswithkeys'
+    print("URL: "+urlla+" ")
     datta = json.loads(requests.get(urlla).text)
+    pprint.pprint(datta)
     for m in datta['query']['results']['rate']:
         resut.update({ m['id'] : m['Rate'] })
 
