@@ -40,3 +40,12 @@ def sumer(usrdir,dicto):
 
         modee = True
 
+    satres = {}
+    for itema in stados:
+        valus = stados.get(itema,0.0)
+        setas = satres.get(valus,[])
+        setas.append(itema)
+        satres.update({ valus : setas })
+
+    return {'stagun':stagun, 'stados':stados, 'satres':satres}
+    #return stados
