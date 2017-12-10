@@ -27,8 +27,8 @@ def openSetting(usrdir):
     except FileNotFoundError:
         tool.diro(direc=usrdir)
         faale = open(usrdir + '/setting.json','w')
-        setting = modVariables.initi().get('setti')
-        json.dump(setting,faale,indent=4,sort_keys=True)
+        argo = modVariables.Argo()
+        json.dump(argo.setti,faale,indent=4,sort_keys=True)
         faale.close()
         return setting
 
