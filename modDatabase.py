@@ -219,8 +219,6 @@ def fixAcc(usrdir,rawdb):
             if ndb.get('toooo','') == '':
                 ndb.update( {'toooo' : dexpe })
         else:
-            ndb.update( {'tpric' : ndb.get('price','') })
-            ndb.update( {'tkare' : ndb.get('karen','') })
             if ndb.get('fromm','') == '':
                 ndb.update( {'fromm' : dexpe })
             if ndb.get('toooo','') == '':
