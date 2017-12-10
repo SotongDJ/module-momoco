@@ -1,5 +1,4 @@
 from core import modDatabase
-from core import modVariables
 
 def sumer(usrdir,dicto):
     print('modSummer.sumer: '+usrdir)
@@ -13,13 +12,15 @@ def sumer(usrdir,dicto):
     utempo = dicto.get('utempo','')
     takas = dicto.get('takas','')
     kekas = dicto.get('kekas','')
-    keywo = dicto.get(kekas,'')
 
+    keywo = dicto.get(kekas,'')
     tiset = modDatabase.timra(usrdir, dtempo=dtempo, utempo=utempo)
 
     modee = True
 
     stagun = []
+    stados = {}
+
     for rekod in tiset:
         sorse = rawdb.get(rekod,{})
         for keysa in list(sorse.keys()):
@@ -28,17 +29,14 @@ def sumer(usrdir,dicto):
                     modee = False
         if modee:
             stagun.append(rekod)
+            print(sorse.get(kekas,'')+' = '+keywo+"?")
+
+            if sorse.get(kekas,'') == keywo:
+                taket = sorse.get(takas,'')
+                print('kekas:'+kekas+', value:'+sorse.get(kekas,''))
+                print('takas:'+takas+', taket:'+taket)
+                upvalu = stados.get(taket,0.0) + float(sorse.get('tpric',''))
+                stados.update({ taket : upvalu })
+
         modee = True
 
-    stados = {}
-    for rekod in stagun:
-        sorse = rawdb.get(rekod,{})
-        print(sorse.get(kekas,'')+' - '+keywo)
-        if sorse.get(kekas,'') == keywo:
-            taket = sorse.get(takas,'')
-            print('kekas:'+kekas+', value:'+sorse.get(kekas,''))
-            print('takas:'+takas+', taket:'+taket)
-            upvalu = stados.get(taket,0.0) + float(sorse.get('tpric',''))
-            stados.update({ taket : upvalu })
-
-    return {'stagun':stagun, 'stados':stados}
