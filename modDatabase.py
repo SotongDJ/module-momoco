@@ -38,16 +38,22 @@ def changeSetting(usrdir,libra):
     json.dump(libra,faale,indent=4,sort_keys=True)
     faale.close()
 
-def openKaratio(usrdir):
-    print('modDatabase.openKaratio: '+usrdir)
+def cvKaren(usrdir,orika,tarka,innum):
+    print('modDatabase.cvKaren: '+usrdir)
+    print('input: '+orika+' '+str(innum))
     tool.ckfile(usrdir,'karen.json',addi='json')
     faale = open(usrdir + '/karen.json',"r")
     try:
-        karatio = json.load(faale)
+        karat = json.load(faale)
     except ValueError:
-        karatio = {}
+        karat = {}
     faale.close()
-    return karatio
+
+    ratae = karat.get(orika+tarka,0.0)
+    outnu = round(innum * ratae,2)
+
+    print('output: '+tarka+' '+str(outnu))
+    return outnu
 
 def getKaratio(usrdir,modde='refes'):
     print('modDatabase.getKaratio: '+ usrdir)
