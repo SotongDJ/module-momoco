@@ -20,6 +20,7 @@ def sumer(usrdir,dicto):
 
     stagun = []
     stados = {}
+    stacua = {}
 
     for rekod in tiset:
         sorse = rawdb.get(rekod,{})
@@ -37,6 +38,9 @@ def sumer(usrdir,dicto):
                 taket = sorse.get(takas,'')
                 tkare = sorse.get('tkare','')
                 tpric = sorse.get('tpric','')
+                valus = 0.0
+                upvalu = 0.0
+                valis = []
                 print('kekas:'+kekas+', value:'+sorse.get(kekas,''))
                 print('takas:'+takas+', taket:'+taket)
 
@@ -45,17 +49,23 @@ def sumer(usrdir,dicto):
                 else:
                     valus = float(tpric)
 
-                upvalu = stados.get(taket,0.0) + valus
+                upvalu = round(stados.get(taket,0.0) + valus,2)
                 stados.update({ taket : upvalu })
+
+                valis = stacua.get(taket,[])
+                valis.append(rekod)
+                stacua.update({ taket : valis })
 
         modee = True
 
     satres = {}
     for itema in stados:
+        valus = 0.0
+        setas = []
         valus = stados.get(itema,0.0)
         setas = satres.get(valus,[])
         setas.append(itema)
         satres.update({ valus : setas })
 
-    return {'stagun':stagun, 'stados':stados, 'satres':satres}
+    return {'stagun':stagun, 'stados':stados, 'satres':satres, 'stacua':stacua}
     #return stados
