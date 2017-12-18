@@ -4,17 +4,17 @@ def vebosa(msg="",vebo=False):
     if vebo:
         print(msg)
 
-def sumer(usrdir,dicto,vebo=False):
+def sumer(usrdir,parao,dicto,vebo=False):
     print('modSummer.sumer: '+usrdir)
     libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
 
-    dtempo = dicto.get('dtempo','')
-    utempo = dicto.get('utempo','')
-    takas = dicto.get('takas','')
-    kekas = dicto.get('kekas','')
-    karen = dicto.get('karen','')
+    dtempo = parao.get('dtempo','')
+    utempo = parao.get('utempo','')
+    takas = parao.get('takas','')
+    kekas = parao.get('kekas','')
+    karen = parao.get('karen','')
 
     keywo = dicto.get(kekas,'')
     tiset = modDatabase.timra(usrdir, dtempo=dtempo, utempo=utempo)
