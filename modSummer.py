@@ -9,69 +9,17 @@ def sumer(usrdir,parao,dicto,vebo=False):
     libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
-
     dtempo = parao.get('dtempo','')
     utempo = parao.get('utempo','')
-    takas = parao.get('takas','')
-    kekas = parao.get('kekas','')
-    karen = parao.get('karen','')
 
-    keywo = dicto.get(kekas,'')
+    resut = {}
     tiset = modDatabase.timra(usrdir, dtempo=dtempo, utempo=utempo)
 
-    modee = True
+    stagun = samuno(usrdir,tiset,dicto,vebo=vebo)
+    resut.update({'stagun':stagun})
+    resut.update(dotres(usrdir,stagun,parao,dicto,vebo=vebo))
 
-    stagun = []
-    stados = {}
-    stacua = {}
-
-    for rekod in tiset:
-        sorse = rawdb.get(rekod,{})
-        for keysa in list(sorse.keys()):
-            if dicto.get(keysa,'') != '':
-                if sorse.get(keysa,'') != dicto.get(keysa,''):
-                    vebosa(msg="[remove]keysa:"+sorse.get(keysa,'')+"!="+dicto.get(keysa,''),vebo=vebo)
-                    modee = False
-
-        valus = 0.0
-        if modee:
-            stagun.append(rekod)
-
-            if sorse.get(kekas,'') == keywo:
-                taket = sorse.get(takas,'')
-                tkare = sorse.get('tkare','')
-                tpric = sorse.get('tpric','')
-                valus = 0.0
-                upvalu = 0.0
-                valis = []
-                vebosa(msg='[accept]kekas:'+kekas+', takas:'+takas,vebo=vebo)
-                print('[accept]value:'+sorse.get(kekas,'')+', taket:'+taket)
-
-                if tkare != karen:
-                    valus = modDatabase.cvKaren(usrdir,tkare,karen,float(tpric))
-                else:
-                    valus = float(tpric)
-
-                upvalu = round(stados.get(taket,0.0) + valus,2)
-                stados.update({ taket : upvalu })
-
-                valis = stacua.get(taket,[])
-                valis.append(rekod)
-                stacua.update({ taket : valis })
-
-        modee = True
-
-    satres = {}
-    for itema in stados:
-        valus = 0.0
-        setas = []
-        valus = stados.get(itema,0.0)
-        setas = satres.get(valus,[])
-        setas.append(itema)
-        satres.update({ valus : setas })
-
-    return {'stagun':stagun, 'stados':stados, 'satres':satres, 'stacua':stacua}
-    #return stados
+    return resut
 
 def samuno(usrdir,ulist,dicto,vebo=False):
     print('modSummer.samuno: '+usrdir)
