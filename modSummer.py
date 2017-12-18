@@ -7,7 +7,6 @@ def vebosa(msg="",vebo=False):
 def sumer(usrdir,dicto,vebo=False):
     print('modSummer.sumer: '+usrdir)
     libra = modDatabase.opendb(usrdir)
-    libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
 
