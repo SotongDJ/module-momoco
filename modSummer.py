@@ -74,7 +74,7 @@ def sumer(usrdir,parao,dicto,vebo=False):
     #return stados
 
 def samuno(usrdir,ulist,dicto,vebo=False):
-    print('modSummer.sumer: '+usrdir)
+    print('modSummer.samuno: '+usrdir)
     libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
@@ -94,4 +94,3 @@ def samuno(usrdir,ulist,dicto,vebo=False):
         modee = True
     return stagun
 
-#def dotres():
