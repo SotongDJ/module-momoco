@@ -72,3 +72,26 @@ def sumer(usrdir,parao,dicto,vebo=False):
 
     return {'stagun':stagun, 'stados':stados, 'satres':satres, 'stacua':stacua}
     #return stados
+
+def samuno(usrdir,ulist,dicto,vebo=False):
+    print('modSummer.sumer: '+usrdir)
+    libra = modDatabase.opendb(usrdir)
+    rawdb = libra.get('raw',{})
+    keydb = libra.get('key',{})
+
+    modee = True
+    stagun = []
+
+    for rekod in ulist:
+        sorse = rawdb.get(rekod,{})
+        for keysa in list(sorse.keys()):
+            if dicto.get(keysa,'') != '':
+                if sorse.get(keysa,'') != dicto.get(keysa,''):
+                    vebosa(msg="[remove]keysa:"+sorse.get(keysa,'')+"!="+dicto.get(keysa,''),vebo=vebo)
+                    modee = False
+        if modee:
+            stagun.append(rekod)
+        modee = True
+    return stagun
+
+#def dotres():
