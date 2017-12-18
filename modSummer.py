@@ -94,3 +94,52 @@ def samuno(usrdir,ulist,dicto,vebo=False):
         modee = True
     return stagun
 
+def dotres(usrdir,ulist,parao,dicto,vebo=False):
+    print('modSummer.dotres: '+usrdir)
+    libra = modDatabase.opendb(usrdir)
+    rawdb = libra.get('raw',{})
+    keydb = libra.get('key',{})
+
+    takas = parao.get('takas','')
+    kekas = parao.get('kekas','')
+    karen = parao.get('karen','')
+    keywo = dicto.get(kekas,'')
+
+    stados = {}
+    satres = {}
+    stacua = {}
+
+    for rekod in ulist:
+        sorse = rawdb.get(rekod,{})
+
+        if sorse.get(kekas,'') == keywo:
+            taket = sorse.get(takas,'')
+            tkare = sorse.get('tkare','')
+            tpric = sorse.get('tpric','')
+            valus = 0.0
+            upvalu = 0.0
+            valis = []
+            vebosa(msg='[accept]kekas:'+kekas+', takas:'+takas,vebo=vebo)
+            print('[accept]value:'+sorse.get(kekas,'')+', taket:'+taket)
+
+            if tkare != karen:
+                valus = modDatabase.cvKaren(usrdir,tkare,karen,float(tpric))
+            else:
+                valus = float(tpric)
+
+            upvalu = round(stados.get(taket,0.0) + valus,2)
+            stados.update({ taket : upvalu })
+
+            valis = stacua.get(taket,[])
+            valis.append(rekod)
+            stacua.update({ taket : valis })
+
+    for itema in stados:
+        valus = 0.0
+        setas = []
+        valus = stados.get(itema,0.0)
+        setas = satres.get(valus,[])
+        setas.append(itema)
+        satres.update({ valus : setas })
+
+    return {'stados':stados, 'satres':satres, 'stacua':stacua}
