@@ -36,7 +36,6 @@ def sumer(usrdir,parao,dicto,vebo=False):
         valus = 0.0
         if modee:
             stagun.append(rekod)
-            #print(sorse.get(kekas,'')+' = '+keywo+"?")
 
             if sorse.get(kekas,'') == keywo:
                 taket = sorse.get(takas,'')
