@@ -1,6 +1,10 @@
 from core import modDatabase
 
-def sumer(usrdir,dicto):
+def vebosa(msg="",vebo=False):
+    if vebo:
+        print(msg)
+
+def sumer(usrdir,dicto,vebo=False):
     print('modSummer.sumer: '+usrdir)
     libra = modDatabase.opendb(usrdir)
     libra = modDatabase.opendb(usrdir)
@@ -25,8 +29,9 @@ def sumer(usrdir,dicto):
     for rekod in tiset:
         sorse = rawdb.get(rekod,{})
         for keysa in list(sorse.keys()):
-            if dicto.get(keywo,'') != '':
-                if sorse.get(keysa,'') != dicto.get(keywo,''):
+            if dicto.get(keysa,'') != '':
+                if sorse.get(keysa,'') != dicto.get(keysa,''):
+                    vebosa(msg="[remove]keysa:"+sorse.get(keysa,'')+"!="+dicto.get(keysa,''),vebo=vebo)
                     modee = False
 
         valus = 0.0
@@ -41,8 +46,8 @@ def sumer(usrdir,dicto):
                 valus = 0.0
                 upvalu = 0.0
                 valis = []
-                print('kekas:'+kekas+', value:'+sorse.get(kekas,''))
-                print('takas:'+takas+', taket:'+taket)
+                vebosa(msg='[accept]kekas:'+kekas+', takas:'+takas,vebo=vebo)
+                print('[accept]value:'+sorse.get(kekas,'')+', taket:'+taket)
 
                 if tkare != karen:
                     valus = modDatabase.cvKaren(usrdir,tkare,karen,float(tpric))
