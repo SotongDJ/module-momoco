@@ -281,38 +281,38 @@ def expocsv(usrdir,keywo):
         resuf.write(linno+'\n')
     resuf.close()
 
-def timra(usrdir, dtempo='',utempo='', modde='uuid'):
+def timra(usrdir, btempo='',ftempo='', modde='uuid'):
     print('modDatabase.timra: '+usrdir)
     print('modde: '+modde)
     libra = opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
 
-    if dtempo == '':
-        dtempo = tool.date(modde=1)[0:7]
-    if utempo == '':
-        utempo = tool.date(modde=1)[0:7]
+    if btempo == '':
+        btempo = tool.date(modde=1)[0:7]
+    if ftempo == '':
+        ftempo = tool.date(modde=1)[0:7]
 
     ddalit = '0000-00-00'
     udalit = '9999-99-99'
-    dtempo = dtempo + ddalit[len(dtempo):len(ddalit)+1]
-    utempo = utempo + udalit[len(utempo):len(udalit)+1]
-    print('dtempo: '+dtempo)
-    print('utempo: '+utempo)
+    btempo = btempo + ddalit[len(btempo):len(ddalit)+1]
+    ftempo = ftempo + udalit[len(ftempo):len(udalit)+1]
+    print('btempo: '+btempo)
+    print('ftempo: '+ftempo)
 
     tok = []
     tak = list(keydb.get('datte',{}).keys())
-    tak.append(dtempo)
-    tak.append(utempo)
+    tak.append(btempo)
+    tak.append(ftempo)
     tik = sorted(set(tak))
     print('datte : '+pprint.pformat(tik,compact=True))
 
-    if tik.index(utempo)-tik.index(dtempo) < 0:
-        dlit = utempo
-        ulit = dtempo
+    if tik.index(ftempo)-tik.index(btempo) < 0:
+        dlit = ftempo
+        ulit = btempo
     else:
-        dlit = dtempo
-        ulit = utempo
+        dlit = btempo
+        ulit = ftempo
 
     tuk = tik[tik.index(dlit):tik.index(ulit)+1]
 

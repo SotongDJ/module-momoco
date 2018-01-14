@@ -166,10 +166,10 @@ def comme(self,msg):
                 self.sending(msgSachi.listMain(lingua,self._statics))
 
             elif '/set_as_' in text:
-                if '/set_as_dtempo' in text:
-                    self._statics.update({ 'dtempo' : self._keywo })
-                elif '/set_as_utempo' in text:
-                    self._statics.update({ 'utempo' : self._keywo })
+                if '/set_as_btempo' in text:
+                    self._statics.update({ 'btempo' : self._keywo })
+                elif '/set_as_ftempo' in text:
+                    self._statics.update({ 'ftempo' : self._keywo })
                 elif '/set_as_keywo' in text:
                     self._statics.update({ 'keywo' : self._keywo })
 
@@ -323,10 +323,10 @@ def comme(self,msg):
                 self.sending(msgAnali.atrenMain(lingua,self._statics))
 
         elif '/set_as_' in text:
-            if '/set_as_dtempo' in text:
-                self._statics.update({ 'dtempo' : self._keywo })
-            elif '/set_as_utempo' in text:
-                self._statics.update({ 'utempo' : self._keywo })
+            if '/set_as_btempo' in text:
+                self._statics.update({ 'btempo' : self._keywo })
+            elif '/set_as_ftempo' in text:
+                self._statics.update({ 'ftempo' : self._keywo })
             elif '/set_as_cokey' in text:
                 self._statics.update({ 'cokey' : self._keywo })
             elif '/set_as_targe' in text:

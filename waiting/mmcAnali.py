@@ -6,8 +6,8 @@ def abratio(usrid,dicto):
     karen = saita['karen']
     lim = saita['screen']
 
-    dtempo=dicto.get('dtempo')
-    utempo=dicto.get('utempo')
+    btempo=dicto.get('btempo')
+    ftempo=dicto.get('ftempo')
     targe=dicto.get('targe')
     cokas=dicto.get('cokas')
     cokey=dicto.get('cokey')
@@ -15,7 +15,7 @@ def abratio(usrid,dicto):
     karatio = mmcdb.openKaratio()
 
     libra = mmcdb.opendb(usrid)
-    timon = mmcdb.timra(usrid,dtempo,utempo)
+    timon = mmcdb.timra(usrid,btempo,ftempo)
     pintosum = 0
 
     tarTpinto = {}
@@ -148,8 +148,8 @@ def abratio(usrid,dicto):
             des=des+taran[0]+'　'+taran+'\n　　'+karen+' '+str(tarTpinto[taran])+' ('+str(tarTpinpec[taran])+'%, '+str(tarTpinpos[taran])+')\n'
     resut={}
 
-    resut.update({'dtempo': dtempo })
-    resut.update({'utempo': utempo })
+    resut.update({'btempo': btempo })
+    resut.update({'ftempo': ftempo })
     resut.update({'cokas': cokas })
     resut.update({'cokey': cokey })
     resut.update({'targe': targe })
@@ -164,8 +164,8 @@ def abratio(usrid,dicto):
     return resut
 
 def atren(usrid,dicto):
-    dtempo=dicto.get('dtempo')
-    utempo=dicto.get('utempo')
+    btempo=dicto.get('btempo')
+    ftempo=dicto.get('ftempo')
     leve=dicto.get('leve')
     cokas=dicto.get('cokas')
     cokey=dicto.get('cokey')
@@ -176,7 +176,7 @@ def atren(usrid,dicto):
     lim = saita['screen'] -3
 
     libra = mmcdb.opendb(usrid)
-    timon = mmcdb.timra(usrid,dtempo,utempo)
+    timon = mmcdb.timra(usrid,btempo,ftempo)
     makprin = 0.00
     rawdb = libra['raw']
     keydb = libra['key']
@@ -332,8 +332,8 @@ def atren(usrid,dicto):
 
     resut={}
 
-    resut.update({'dtempo': dtempo })
-    resut.update({'utempo': utempo })
+    resut.update({'btempo': btempo })
+    resut.update({'ftempo': ftempo })
     resut.update({'cokas': cokas })
     resut.update({'cokey': cokey })
     resut.update({'graf': graf })
@@ -357,10 +357,10 @@ def akaun(usrid,dicto):
     saita = mmcdb.openSetting(usrid)
     karen = saita.get('karen','')
 
-    dtempo = dicto.get('dtempo')
-    utempo = dicto.get('utempo')
-    rslib.update({ 'dtempo' : dtempo })
-    rslib.update({ 'utempo' : utempo })
+    btempo = dicto.get('btempo')
+    ftempo = dicto.get('ftempo')
+    rslib.update({ 'btempo' : btempo })
+    rslib.update({ 'ftempo' : ftempo })
 
     acuno = dicto.get('acuno','')
     rslib.update({ 'acuno' : acuno })
@@ -369,7 +369,7 @@ def akaun(usrid,dicto):
     balan = float(dicto.get('balan','0.0'))
 
     idsrc = [] # uuid set (related with cokas)
-    tiset = mmcdb.timra(usrid,dtempo,utempo) # uuid set (related with tempo)
+    tiset = mmcdb.timra(usrid,btempo,ftempo) # uuid set (related with tempo)
     coset = [] # cokey set
     transle = mmcDefauV.keywo('transle')
 

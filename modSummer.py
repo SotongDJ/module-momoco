@@ -9,11 +9,11 @@ def sumer(usrdir,parao,dicto,vebo=False):
     libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
-    dtempo = parao.get('dtempo','')
-    utempo = parao.get('utempo','')
+    btempo = parao.get('btempo','')
+    ftempo = parao.get('ftempo','')
 
     resut = {}
-    tiset = modDatabase.timra(usrdir, dtempo=dtempo, utempo=utempo)
+    tiset = modDatabase.timra(usrdir, btempo=btempo, ftempo=ftempo)
 
     stagun = samuno(usrdir,tiset,dicto,vebo=vebo)
     resut.update({'stagun':stagun})

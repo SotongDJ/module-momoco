@@ -8,11 +8,11 @@ def sachi(usrdir,dicto):
     keydb = libra.get('key',{})
 
     keywo = dicto.get('keywo','')
-    dtempo = dicto.get('dtempo','')
-    utempo = dicto.get('utempo','')
+    btempo = dicto.get('btempo','')
+    ftempo = dicto.get('ftempo','')
     cokas = dicto.get('cokas','')
 
-    tiset = modDatabase.timra(usrdir, dtempo=dtempo, utempo=utempo)
+    tiset = modDatabase.timra(usrdir, btempo=btempo, ftempo=ftempo)
 
     if cokas == '':
         kaset = keydb.keys()
