@@ -1,5 +1,27 @@
 from core import modDatabase
 
+def help():
+    print("""
+    sumer(usrdir,parao,dicto,vebo=False):
+        usrdir: path for user's data (end without '/')
+            'database'
+
+        parao: parametre
+            {
+                'btempo':'2017-10', #Begin of time range
+                'ftempo':'2017-12', #End of time range
+                'takas':'shoop', # Target category
+                'kekas':'klass', # Base category
+                'karen':'TWD' # Target currency
+            }
+
+        dicto: filter for each category
+            {'klass':'食物','toooo':'支出'}
+
+        vebo: view more detail
+            True or False
+    """)
+
 def vebosa(msg="",vebo=False):
     if vebo:
         print(msg)
