@@ -341,3 +341,22 @@ def listKas(usrdir,kas):
     resut = []
     resut.extend(list(keydb.get(kas,{}).keys()))
     return resut
+
+def listAll(usrdir):
+    print('modDatabase.listAll: '+usrdir)
+    keydb = opendb(usrdir).get('key',{})
+    resut = {}
+    for kas in keydb.keys():
+        if kas not in ['price','tpric','descri','karen','tkare']:
+            for keywo in keydb.get(kas,{}).keys():
+                numon = 0
+                metdi = {}
+                metse = []
+
+                numon = len(keydb.get(kas,{}).get(keywo,[]))
+                metdi = resut.get(keywo,{})
+                metse = metdi.get(numon,[])
+                metse.append(kas)
+                metdi.update({ numon : metse })
+                resut.update({ keywo : metdi })
+    return resut
