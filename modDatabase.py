@@ -342,8 +342,8 @@ def listKas(usrdir,kas):
     resut.extend(list(keydb.get(kas,{}).keys()))
     return resut
 
-def listAll(usrdir):
-    print('modDatabase.listAll: '+usrdir)
+def listKeywo(usrdir):
+    print('modDatabase.listKeywo: '+usrdir)
     keydb = opendb(usrdir).get('key',{})
     resut = {}
     for kas in keydb.keys():
