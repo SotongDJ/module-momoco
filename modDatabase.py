@@ -133,6 +133,18 @@ def chRaw(usrdir,uuid,temra):
     faale.close()
     return record
 
+def rmRaw(usrdir,uuid):
+    print('modDatabase.rmRaw: '+usrdir)
+    print('uuid: '+uuid)
+    record = opendb(usrdir)
+    ra = record.get('raw',{}).pop(uuid,'')
+    if ra == '':
+        print('rmRaw failed, no record')
+    faale = open(usrdir + '/record.json','w')
+    json.dump(record,faale,indent=4,sort_keys=True)
+    faale.close()
+    return record
+
 def diffdb(a,b):
     print('modDatabase.diffdb')
     resut=[]
