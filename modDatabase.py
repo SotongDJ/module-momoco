@@ -337,13 +337,6 @@ def timra(usrdir, btempo='',ftempo='', modde='uuid'):
     elif modde == 'uuid':
         return datui
 
-def listKas(usrdir,kas):
-    print('modDatabase.listKas: '+usrdir)
-    print('kas: '+kas)
-    keydb = opendb(usrdir).get('key',{})
-    resut = []
-    resut.extend(list(keydb.get(kas,{}).keys()))
-    return resut
 
 def listKeywo(usrdir):
     print('modDatabase.listKeywo: '+usrdir)
