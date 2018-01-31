@@ -337,15 +337,6 @@ def timra(usrdir, btempo='',ftempo='', modde='uuid'):
     elif modde == 'uuid':
         return datui
 
-def getKas(usrdir,lingua='enMY'):
-    print('modDatabase.getKas: '+usrdir)
-    print('lingua: '+lingua)
-    resut = {}
-    kas = list(opendb(usrdir).get('key',{}).keys())
-    for n in kas:
-        resut.update({ n : modVariables.keywo('transle',lingua=lingua).get(n,'') })
-    return resut
-
 def listKas(usrdir,kas):
     print('modDatabase.listKas: '+usrdir)
     print('kas: '+kas)
