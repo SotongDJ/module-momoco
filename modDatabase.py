@@ -3,7 +3,7 @@ from core import tool
 from core import modVariables
 
 def opendb(usrdir):
-    print('modDatabase.opendb: '+usrdir)
+    print('modDatabase.opendb: '+tool.mask(usrdir))
     try:
         faale = open(usrdir + '/record.json','r')
         record = json.load(faale)
@@ -18,7 +18,7 @@ def opendb(usrdir):
         return db
 
 def openSetting(usrdir):
-    print('modDatabase.openSetting: '+usrdir)
+    print('modDatabase.openSetting: '+tool.mask(usrdir))
     try:
         faale = open(usrdir + '/setting.json','r')
         setting = json.load(faale)
@@ -33,13 +33,13 @@ def openSetting(usrdir):
         return setting
 
 def changeSetting(usrdir,libra):
-    print('modDatabase.changeSetting: '+usrdir)
+    print('modDatabase.changeSetting: '+tool.mask(usrdir))
     faale = open(usrdir + '/setting.json','w')
     json.dump(libra,faale,indent=4,sort_keys=True)
     faale.close()
 
 def cvKaren(usrdir,orika,tarka,innum):
-    print('modDatabase.cvKaren: '+usrdir)
+    print('modDatabase.cvKaren: '+tool.mask(usrdir))
     print('input: '+orika+' '+str(innum))
     tool.ckfile(usrdir,'karen.json',addi='json')
     faale = open(usrdir + '/karen.json',"r")
@@ -56,7 +56,7 @@ def cvKaren(usrdir,orika,tarka,innum):
     return outnu
 
 def getKaratio(usrdir,modde='refes'):
-    print('modDatabase.getKaratio: '+ usrdir)
+    print('modDatabase.getKaratio: '+tool.mask(usrdir))
     print('modde: '+modde)
     keydb = opendb(usrdir).get('key',{})
 
@@ -114,7 +114,7 @@ def opencsv(fille,keywo):
     return result
 
 def addRaw(usrdir,temra):
-    print('modDatabase.addRaw: '+usrdir)
+    print('modDatabase.addRaw: '+tool.mask(usrdir))
     record = opendb(usrdir)
     timta = tool.date(3) + '0000'
     record.get('raw',{}).update({ timta : temra })
@@ -124,7 +124,7 @@ def addRaw(usrdir,temra):
     return record
 
 def chRaw(usrdir,uuid,temra):
-    print('modDatabase.chRaw: '+usrdir)
+    print('modDatabase.chRaw: '+tool.mask(usrdir))
     print('uuid: '+uuid)
     record = opendb(usrdir)
     record.get('raw',{}).update( { uuid : temra } )
@@ -134,7 +134,7 @@ def chRaw(usrdir,uuid,temra):
     return record
 
 def rmRaw(usrdir,uuid):
-    print('modDatabase.rmRaw: '+usrdir)
+    print('modDatabase.rmRaw: '+tool.mask(usrdir))
     print('uuid: '+uuid)
     record = opendb(usrdir)
     ra = record.get('raw',{}).pop(uuid,'')
@@ -196,7 +196,7 @@ def ckdb(a,b):
     return l
 
 def fixAcc(usrdir,rawdb):
-    print('modDatabase.fixAcc: '+usrdir)
+    print('modDatabase.fixAcc: '+tool.mask(usrdir))
     setti = openSetting(usrdir)
     #rawdb = opendb(usrid).get('raw',{})
 
@@ -239,7 +239,7 @@ def fixAcc(usrdir,rawdb):
     return rawdb
 
 def refesdb(usrdir):
-    print('modDatabase.refesdb: '+usrdir)
+    print('modDatabase.refesdb: '+tool.mask(usrdir))
     libra = {}
     rawdb = opendb(usrdir).get('raw',{})
     rawdb = fixAcc(usrdir,rawdb)
@@ -251,7 +251,7 @@ def refesdb(usrdir):
     faale.close()
 
 def upgradeSetting(usrdir,lib):
-    print('modDatabase.upgradeSetting: '+usrdir)
+    print('modDatabase.upgradeSetting: '+tool.mask(usrdir))
     libra = openSetting(usrdir)
     if set(libra.keys()) == set(lib.keys()):
         return libra
@@ -262,7 +262,7 @@ def upgradeSetting(usrdir,lib):
         return lib
 
 def importRaw(usrdir,lib):
-    print('modDatabase.importRaw: '+usrdir)
+    print('modDatabase.importRaw: '+tool.mask(usrdir))
     refesdb(usrdir)
     lib=fixAcc(usrdir,lib)
     source = opendb(usrdir)
@@ -274,7 +274,7 @@ def importRaw(usrdir,lib):
     filla.close()
 
 def expocsv(usrdir,keywo):
-    print('modDatabase.opencsv')
+    print('modDatabase.opencsv: '+tool.mask(usrdir))
     result = {}
     numo = 0
     temla = usrdir + '/template.csv'
@@ -294,7 +294,7 @@ def expocsv(usrdir,keywo):
     resuf.close()
 
 def timra(usrdir, btempo='',ftempo='', modde='uuid'):
-    print('modDatabase.timra: '+usrdir)
+    print('modDatabase.timra: '+tool.mask(usrdir))
     print('modde: '+modde)
     libra = opendb(usrdir)
     rawdb = libra.get('raw',{})

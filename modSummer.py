@@ -1,4 +1,5 @@
 from core import modDatabase
+from core import tool
 
 def help():
     print("""
