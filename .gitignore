@@ -13,6 +13,8 @@ database/
 database
 temp/
 test/
+core/__pycache__
+core/__pycache__/
 update/
 bin.tar.gz
 *.yaml
