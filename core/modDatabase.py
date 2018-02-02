@@ -143,7 +143,7 @@ def rmRaw(usrdir,uuid):
     faale = open(usrdir + '/record.json','w')
     json.dump(record,faale,indent=4,sort_keys=True)
     faale.close()
-    return record
+    return ra
 
 def diffdb(a,b):
     print('modDatabase.diffdb')
