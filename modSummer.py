@@ -28,7 +28,7 @@ def vebosa(msg="",vebo=False):
         print(msg)
 
 def sumer(usrdir,parao,dicto,vebo=False):
-    print('modSummer.sumer: '+usrdir)
+    print('modSummer.sumer: '+tool.mask(usrdir))
     libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
@@ -45,7 +45,7 @@ def sumer(usrdir,parao,dicto,vebo=False):
     return resut
 
 def samuno(usrdir,ulist,dicto,vebo=False):
-    print('modSummer.samuno: '+usrdir)
+    print('modSummer.samuno: '+tool.mask(usrdir))
     libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
@@ -66,7 +66,7 @@ def samuno(usrdir,ulist,dicto,vebo=False):
     return stagun
 
 def dotres(usrdir,ulist,parao,dicto,vebo=False):
-    print('modSummer.dotres: '+usrdir)
+    print('modSummer.dotres: '+tool.mask(usrdir))
     libra = modDatabase.opendb(usrdir)
     rawdb = libra.get('raw',{})
     keydb = libra.get('key',{})
