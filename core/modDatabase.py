@@ -317,7 +317,7 @@ def timra(usrdir, btempo='',ftempo='', modde='uuid'):
     tak.append(btempo)
     tak.append(ftempo)
     tik = sorted(set(tak))
-    print('datte : '+pprint.pformat(tik,compact=True))
+    # print('datte : '+pprint.pformat(tik,compact=True))
 
     if tik.index(ftempo)-tik.index(btempo) < 0:
         dlit = ftempo
