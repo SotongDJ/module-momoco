@@ -328,6 +328,16 @@ def timra(usrdir, btempo='',ftempo='', modde='uuid'):
 
     tuk = tik[tik.index(dlit):tik.index(ulit)+1]
 
+    tuk = sorted(tuk)
+    n = 0
+    while n <= len(tuk):
+        datta = tuk[n]
+        if datta[len(datta)-2:len(datta)] == '00':
+            print('remove: ' + tuk.pop(tuk.index(datta)))
+        elif datta[len(datta)-2:len(datta)] == '99':
+            print('remove: ' + tuk.pop(tuk.index(datta)))
+        n = n + 1
+    
     datui = []
     for datte in tuk:
         datui.extend(keydb.get('datte',{}).get(datte,[]))
