@@ -92,15 +92,30 @@ class Argo:
     def __init__(self):
         super(Argo, self).__init__()
         self.usrdir = ''
-        self.primo = []
-        self.submo = ''
-        self.keywo = ''
-        self.kasso = ''
-        self.recom = {}
 
-        #'rawdb' : {},
-        #'keydb' : {},
-        #'karat' : {},
+        self.temra = {
+        "datte":"",
+        "namma":"", "klass":"", "shoop":"",
+        "fromm":"", "price":"", "karen":"",
+        "toooo":"", "tpric":"", "tkare":"",
+        "desci":"",
+        }
+        self.database = {
+            'mode' : { 0 : '' },
+            'chat' : {
+                'chatid' : 0,
+                'chattype' : '',
+                'content_type' : '',
+            },
+            'keyword' : '',
+            'creo' : {
+                'recom' : {},
+                'temra' : self.temra,
+            },
+            'saci' : {
+
+            }
+        }
 
         self.veces = 0
 
@@ -116,13 +131,6 @@ class Argo:
             'lingua':'enMY',
             'natio':'',
         }
-        self.temra = {
-            "datte":"",
-            "namma":"", "klass":"", "shoop":"",
-            "fromm":"", "price":"", "karen":"",
-            "toooo":"", "tpric":"", "tkare":"",
-            "desci":"",
-        }
         self.stati = {
             'mode':'',
             'leve':10,
@@ -135,7 +143,3 @@ class Argo:
             'datte': '',
             'uuid' : '',
         }
-
-        self.catid = 0
-        self.catyp = ''
-        self.cotyp = ''
