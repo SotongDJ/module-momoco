@@ -148,15 +148,3 @@ class Argo:
             'lingua':'enMY',
             'natio':'',
         }
-        self.stati = {
-            'mode':'',
-            'leve':10,
-            'btempo':'','ftempo':'',
-            'cokas':'','cokey':'',
-            'targe':'','keywo':'',
-            'acuno':'','balan':'0',
-        }
-        self.listi = {
-            'datte': '',
-            'uuid' : '',
-        }
