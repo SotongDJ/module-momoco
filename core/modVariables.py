@@ -124,11 +124,13 @@ class Argo:
             },
             'keyword' : '',
             'creo' : {
+                'submode' : '',
                 'recom' : {},
                 'temra' : self.temra,
             },
             'saci' : {
-
+                'submode' : '',
+                'setio' : {},
             }
         }
 
