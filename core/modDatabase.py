@@ -1,6 +1,5 @@
 import json, random, pprint, requests
 from core import tool
-from core import modVariables
 
 def opendb(usrdir):
     print('modDatabase.opendb: '+tool.mask(usrdir))
@@ -27,7 +26,7 @@ def openSetting(usrdir):
     except FileNotFoundError:
         tool.diro(direc=usrdir)
         faale = open(usrdir + '/setting.json','w')
-        argo = modVariables.Argo()
+        argo = modArgona.Argo()
         json.dump(argo.setti,faale,indent=4,sort_keys=True)
         faale.close()
         return setting
