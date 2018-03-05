@@ -100,8 +100,13 @@ def opencsv(fille,keywo):
         elif linne[0] != "#":
             libo = {}
             word = linne.split(keywo)
-            for n in range(0,len(word)):
-                libo.update({ keys[n] : word[n] })
+
+            if len(word) != len(keys):
+                print('Error: len(word) != len(keys) ')
+            else:
+                for n in range(0,len(word)):
+                    libo.update({ keys[n] : word[n] })
+
             if tite:
                 result.update({ libo.pop('uuid','false').replace("uuid-","") : libo  })
             else:
