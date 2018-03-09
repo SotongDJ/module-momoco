@@ -31,6 +31,21 @@ def openSetting(usrdir):
         faale.close()
         return setting
 
+def openKaratio(usrdir):
+    print('modDatabase.openKaratio: '+tool.mask(usrdir))
+    try:
+        faale = open(usrdir + '/karen.json','r')
+        setting = json.load(faale)
+        faale.close()
+        return setting
+    except FileNotFoundError:
+        tool.diro(direc=usrdir)
+        faale = open(usrdir + '/karen.json','w')
+        argo = modArgona.Argo()
+        json.dump(argo.setti,faale,indent=4,sort_keys=True)
+        faale.close()
+        return setting
+
 def changeSetting(usrdir,libra):
     print('modDatabase.changeSetting: '+tool.mask(usrdir))
     faale = open(usrdir + '/setting.json','w')
@@ -54,17 +69,12 @@ def cvKaren(usrdir,orika,tarka,innum):
     print('output: '+tarka+' '+str(outnu))
     return outnu
 
-def getKaratio(usrdir,modde='refes'):
+def getKaratio(usrdir):
     print('modDatabase.getKaratio: '+tool.mask(usrdir))
-    print('modde: '+modde)
     keydb = opendb(usrdir).get('key',{})
 
-    if modde == 'refes':
-        karat = openKaratio(usrdir)
-        resut = openKaratio(usrdir)
-    elif modde == 'reset':
-        karat = {}
-        resut = {}
+    karat = openKaratio(usrdir)
+    resut = {}
 
     curre = set(list(keydb.get('karen'))+list(keydb.get('tkare')))
     for m in curre:
