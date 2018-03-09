@@ -282,7 +282,7 @@ def importRaw(usrdir,lib):
     source = opendb(usrdir)
     for uuid in list(lib.keys()):
         source.get('raw',{}).update({ uuid : lib.get(uuid,{}) })
-
+    refesdb(usrdir)
     filla = open(usrdir + '/record.json','w')
     json.dump(source,filla,indent=4,sort_keys=True)
     filla.close()
